@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+ @license
+ Copyright 2019 Google LLC. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+-->
+<html>
+  <head>
+    <title>Directions Service</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="module" src="./index.ts"></script>
+  </head>
+  <body>
+    <div id="floating-panel">
+      <b>Start: </b>
+      <select id="start">
+        <option value="2440 S. Milliken Avenue,Ontario,CA 91761">LA</option>
+        <option value="45 Fernwood Ave Suite D,Edison,NJ 08837">NJ</option>
+        <option value="244 Pine Barren Rd,Pooler,GA 31322">SAV</option>
+
+        <option value="419 BANK ST STE 140,SOUTHLAKE,TX 76092">TX</option>
+        <option value="2575 E MAIN ST STE 110,PLAINFIELD,IN 46168">IN</option>
+        <option value="2475 TOUHY AVE,ELK GROVE VILLAGE,IL 60007">IL</option>
+        <option value="561 STRANDER BLVD,SEATTLE,WA 98188">WA</option>
+        <option value="2802 W WINTON AVE,HAYWARD,CA 94545">CA2</option>
+      </select>
+      <b>End: </b>
+      <select id="end">
+        <option value="2250 Roswell Dr #200,Pittsburgh,PA 15205">XXX</option>
+        <option value="2250 Roswell Dr #200,Pittsburgh,PA 15205">YYY</option>
+
+        <option value="1610 Van Buren Road,EASTON,PA,18045">ABE4</option>
+        <option value="401 Independence Rd,FLORENCE,NJ,08518">ABE8</option>
+        <option value="550 Oak Ridge Road,HAZLETON,PA,18202">AVP1</option>
+        <option value="298 1st Ave,GOULDSBORO,PA,18424">AVP3</option>
+        <option value="2700 Center Drive,DUPONT,WA,98327">BFI3</option>
+        <option value="2020 Joe B Jackson Pkwy,MURFREESBORO,TN,37127">
+          BNA3
+        </option>
+        <option value="165 Business Blvd,CLEAR BROOK,VA,22624">BWI4</option>
+        <option value="225 Infinity Dr NW,CHARLESTON,TN,37310">CHA2</option>
+        <option value="10240 Old Dowd Road,CHARLOTTE,NC,28214">CLT2</option>
+        <option value="6500 Davidson Hwy,CONCORD,NC,28027">CLT3</option>
+        <option value="6050 Gateway Court,GROVEPORT,OH,43125">CMH2</option>
+        <option value="22205 East 19th Ave,AURORA,CO,80019">DEN2</option>
+        <option value="39000 Amrhein Road,LIVONIA,MI,48150">DET1</option>
+        <option value="940 W Bethel Road,COPPELL,TX,75019">DFW6</option>
+        <option value="33333 LBJ Freeway,DALLAS,TX,75241">FTW1</option>
+        <option value="402 John Dodd Rd,Spartanburg,SC,29303">GSP1</option>
+        <option value="31555 Highway 90 E,Brookshire,TX,77423">HOU3</option>
+        <option value="715 Airtech Pkwy,Plainfield,IN,46168">IND2</option>
+        <option value="710 S. Girls School Rd,Indianapolis,IN,46231">
+          IND4
+        </option>
+        <option value="13333 103rd St,Jacksonville,FL,32210">JAX3</option>
+        <option value="4550 Nexus Way,Las Vegas,NV,89115">LAS6</option>
+        <option value="27517 Pioneer Ave,Redlands,CA,92374">LGB4</option>
+        <option value="20901 Krameria Ave,Riverside,CA,92508">LGB6</option>
+        <option value="1568 N Linden Ave,RIALTO,CA,92376">LGB8</option>
+        <option value="2 Ames Drive,Carlisle,PA,17015">MDT1</option>
+        <option value="600 Principio Parkway,North East,MD,21901">MDT2</option>
+        <option value="250 Emerald Drive,Joliet,IL,60433">MDW2</option>
+        <option value="201 EMERALD DR,Joliet,IL,60433">MDW4</option>
+        <option value="1750 Bridge Drive,Waukegan,IL,60085">MDW8</option>
+        <option value="2865 Duke Parkway,Aurora,IL,60502">MDW9</option>
+        <option value="3292 E Holmes Rd,Memphis,TN,38118">MEM1</option>
+        <option value="808 Hog Mountain Road,Jefferson,GA,30549">MGE3</option>
+        <option value="255 Park Center Drive,Patterson,CA,95363">OAK3</option>
+        <option value="1910 E Central Ave,San Bernardino,CA,92408">ONT2</option>
+        <option value="24208 San Michele Rd,Moreno Valley,CA,92551">
+          ONT6
+        </option>
+        <option value="24300 Nandina Ave,Moreno Valley,CA,92551">ONT8</option>
+        <option value="2125 West San Bernardino Ave,Redlands,CA,92374">
+          ONT9
+        </option>
+        <option value="500 McCarthy Dr,Lewisberry,PA,17339">PHL5</option>
+        <option value="675 Allen Rd,Carlisle,PA,17015">PHL6</option>
+        <option value="16920 W Commerce Drive,Goodyear,AZ,85338">PHX5</option>
+        <option value="800 N 75th Ave,Pheonix,AZ,85043">PHX7</option>
+        <option value="8000 North Virginia Street,Reno,NV,89506">RNO4</option>
+        <option value="6000 Enterprise Avenue,Schertz,TX,78154">SAT1</option>
+        <option value="188 Mountain House Parkway,Tracy,CA,95377">SJC7</option>
+        <option value="3923 S B ST,STOCKTON,CA,95206">SMF3</option>
+        <option value="2496 W Walnut Ave,Rialto,CA,92376">SNA4</option>
+        <option value="3050 Gateway Commerce Center Dr S,Edwardsville,IL,62025">
+          STL4
+        </option>
+        <option value="2651 Oldmans Creek Rd,Logan Township,NJ,08085">
+          TEB3
+        </option>
+        <option value="22 Highstown Cranbury Station Rd,Cranbury,NJ,08512">
+          TEB6
+        </option>
+        <option value="1760 County Line Rd.,Lakeland,FL,33811">TPA2</option>
+        <option value="11263 Oleander Ave,FONTANA,CA,92337">LAX9</option>
+        <option value="1151 S GRAHAM RD,GREENWOOD,IN,46143">IND9</option>
+        <option value="500 Duke Drive,LEBANON,TN,37090">BNA2</option>
+        <option value="7001 Skipper Rd,Macon,GA,31216-6427">SAV3</option>
+        <option value="4775 Depot Ct SE,Salem,OR,97317">PDX7</option>
+        <option value="700 GATEWAY BLVD,Monroe,OH,45050">CMH3</option>
+        <option value="50500 Mound Rd,Shelby Township,MI,48317-1318">
+          DET2
+        </option>
+        <option value="4532 NEWCASTLE RD,STOCKTON,CA,95215-9465">SCK1</option>
+        <option value="2701 West Bethel Road,Coppell,TX,75019">FTW2</option>
+        <option value="555 E. ORANGE SHOW RD.,San Bernardino,CA,92408">
+          KRB1
+        </option>
+        <option value="1125 W REMINGTON BLVD,ROMEOVILLE,IL,60446">MDW6</option>
+        <option value="12300 Bermuda Road,HENDERSON,NV,89044-8746">LAS1</option>
+        <option value="4412 W 300 N,GREENFIELD,IN,46140">MQJ1</option>
+        <option value="4750 West Mohave St,Phoenix,AZ,85043">PHX6</option>
+        <option value="8181 W ROOSEVELT ST,PHOENIX,AZ,85043-2356">GYR3</option>
+        <option value="800 Perry Road,Plainfield,IN,46168-7637">IND5</option>
+        <option value="1660 N. Linden Avenue,Rialto,CA,92376-2427">LGB7</option>
+        <option value="4375 N Perris Blvd.,PERRIS,CA,92571-7901">LGB9</option>
+        <option value="1901 140th Ave E,Sumner,WA,98390">BFI7</option>
+        <option value="5990 N Cajon Blvd,SAN BERNARDINO,CA,92407-1833">
+          SBD3
+        </option>
+        <option value="1475 AKRON WAY,FORNEY,TX,75126-3566">FTW5</option>
+        <option value="3388 S Cactus Ave,BLOOMINGTON,CA,92316-3819">
+          SBD1
+        </option>
+        <option value="17341 W MINNEZONA AVE,GOODYEAR,AZ,85395-7672">
+          GYR2
+        </option>
+        <option value="6001 S AUSTIN RD,STOCKTON,CA,95215-8354">SCK4</option>
+        <option value="657 W NANCE ST,PERRIS,CA,92571-7424">XLX2</option>
+        <option value="15000 N. Lombard St,Portland,OR,97203-6814">PDX6</option>
+        <option value="555E ORANGE SHOW RD,SAN  BERNARDINO,CA,92408">
+          XIX7
+        </option>
+        <option value="10681 Production Ave,Fontana,CA,92337-8006">XIX6</option>
+        <option value="3837 Bay Lake Trail,North Las Vegas,NV,89030">
+          LAS2
+        </option>
+        <option value="5250 Goodman Road,Eastvale,CA,92880">SNA6</option>
+        <option value="5250 Goodman Road,Eastvale,CA,92880">SNA9</option>
+        <option value="555 East Orange Show Rd,San Bernardino,CA,92408-2453">
+          SNA7
+        </option>
+        <option value="555 East Orange Show Rd,San Bernardino,CA,92408-2453">
+          SNA8
+        </option>
+        <option value="2020 E Central Ave,San Bernardino,CA,92408">ONT5</option>
+      </select>
+    </div>
+    <div id="map"></div>
+
+    <!-- 
+     The `defer` attribute causes the callback to execute after the full HTML
+     document has been parsed. For non-blocking uses, avoiding race conditions,
+     and consistent behavior across browsers, consider loading using Promises
+     with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+    -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+      defer
+    ></script>
+  </body>
+</html>
